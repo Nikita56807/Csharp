@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    public int health = 5;
-    public int level = 1;
-    public float speed = 1.2f;
+    int health = 5;
+    int level = 3;
+    int speed = 2;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        speed *= level * 10;   
+               health = level + health;
+        print(health);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed);
+        Vector3 newPosition;
+        newPosition = transform.position;
+        newPosition.z += speed * Time.deltaTime;
+        transform.position = newPosition;
     }
 }
